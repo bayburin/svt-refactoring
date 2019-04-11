@@ -5,6 +5,7 @@ ruby '2.6.1'
 
 gem 'awesome_print'
 gem 'colorize'
+gem 'rails-i18n'
 gem 'rubocop', require: false
 gem 'slim'
 
