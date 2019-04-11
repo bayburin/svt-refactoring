@@ -10,11 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_10_154958) do
+ActiveRecord::Schema.define(version: 2019_04_11_123620) do
 
   create_table "invent_workplace_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "short_description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_infos", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "tn"
+    t.string "fio"
+    t.string "tel", limit: 6
+    t.integer "dept"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
