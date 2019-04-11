@@ -1,4 +1,5 @@
 UserInfo.destroy_all
+Department.destroy_all
 Invent::WorkplaceType.destroy_all
 
 UserInfo.create(
@@ -21,6 +22,16 @@ UserInfo.create(
       tel: '21-80',
       dept: 320
     }
+  ]
+)
+
+Department.create(
+  [
+    { name: 320 },
+    { name: 440 },
+    { name: 510 },
+    { name: 600 },
+    { name: 730 }
   ]
 )
 
