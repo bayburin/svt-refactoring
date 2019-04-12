@@ -6,7 +6,7 @@ ruby '2.6.1'
 gem 'awesome_print'
 gem 'colorize'
 gem 'rails-i18n'
-gem 'rubocop', require: false
+gem 'rubocop-performance', require: false
 gem 'slim'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

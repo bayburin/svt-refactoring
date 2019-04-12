@@ -1,6 +1,68 @@
+IssLocationSite.destroy_all
 UserInfo.destroy_all
-Department.destroy_all
+Invent::Department.destroy_all
 Invent::WorkplaceType.destroy_all
+
+IssLocationSite.create(
+  [
+    {
+      name: '1',
+      short_description: 'Главная площадка',
+      iss_location_buildings_attributes: [
+        {
+          name: '27',
+          short_description: 'Корпус 27'
+        },
+        {
+          name: '3',
+          short_description: 'Корпус 3'
+        }
+      ]
+    },
+    {
+      name: '2',
+      short_description: 'Площадка 2',
+      iss_location_buildings_attributes: [
+        {
+          name: '2г',
+          short_description: 'Корпус 2г'
+        },
+        {
+          name: '2д',
+          short_description: 'Корпус 2д'
+        }
+      ]
+    },
+    {
+      name: '3',
+      short_description: 'Площадка 3',
+      iss_location_buildings_attributes: [
+        {
+          name: '7',
+          short_description: 'Корпус 7'
+        },
+        {
+          name: '5',
+          short_description: 'Корпус 5'
+        }
+      ]
+    },
+    {
+      name: '3a',
+      short_description: 'Площадка 3а',
+      iss_location_buildings_attributes: [
+        {
+          name: '11',
+          short_description: 'Корпус 11'
+        },
+        {
+          name: '13',
+          short_description: 'Корпус 13'
+        }
+      ]
+    }
+  ] 
+)
 
 UserInfo.create(
   [
@@ -25,7 +87,7 @@ UserInfo.create(
   ]
 )
 
-Department.create(
+Invent::Department.create(
   [
     { name: 320 },
     { name: 440 },
