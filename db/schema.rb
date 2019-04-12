@@ -50,12 +50,13 @@ ActiveRecord::Schema.define(version: 2019_04_11_165711) do
   end
 
   create_table "user_infos", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "tn"
+    t.integer "tn", null: false
     t.string "fio"
     t.string "tel", limit: 6
     t.integer "dept"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["tn"], name: "index_user_infos_on_tn", unique: true
   end
 
   add_foreign_key "iss_location_buildings", "iss_location_sites", column: "site_id", primary_key: "site_id"
