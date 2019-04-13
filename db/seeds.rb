@@ -8,7 +8,7 @@ IssLocationSite.create(
     {
       name: '1',
       short_description: 'Главная площадка',
-      iss_location_buildings_attributes: [
+      buildings_attributes: [
         {
           name: '27',
           short_description: 'Корпус 27'
@@ -22,7 +22,7 @@ IssLocationSite.create(
     {
       name: '2',
       short_description: 'Площадка 2',
-      iss_location_buildings_attributes: [
+      buildings_attributes: [
         {
           name: '2г',
           short_description: 'Корпус 2г'
@@ -36,7 +36,7 @@ IssLocationSite.create(
     {
       name: '3',
       short_description: 'Площадка 3',
-      iss_location_buildings_attributes: [
+      buildings_attributes: [
         {
           name: '7',
           short_description: 'Корпус 7'
@@ -50,7 +50,7 @@ IssLocationSite.create(
     {
       name: '3a',
       short_description: 'Площадка 3а',
-      iss_location_buildings_attributes: [
+      buildings_attributes: [
         {
           name: '11',
           short_description: 'Корпус 11'

@@ -1,7 +1,7 @@
 class IssLocationBuilding < ApplicationRecord
   self.primary_key = :building_id
 
-  has_many :iss_location_rooms, foreign_key: :building_id, dependent: :destroy
+  has_many :rooms, class_name: 'IssLocationRoom', foreign_key: :building_id, inverse_of: :building, dependent: :destroy
 
-  belongs_to :iss_location_site, foreign_key: :site_id
+  belongs_to :site, class_name: 'IssLocationSite', foreign_key: :site_id, inverse_of: :buildings
 end
