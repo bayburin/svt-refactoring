@@ -5,6 +5,9 @@ class CreateInventWorkplaces < ActiveRecord::Migration[5.2]
       t.references :department, references: :invent_departments, null: false
       t.integer :responsible_tn, limit: 3
       t.references :room, references: :iss_location_rooms
+      t.text :comment
+      t.integer :status, limit: 1, index: true
+      t.date :freezing_date
       t.timestamps
     end
 

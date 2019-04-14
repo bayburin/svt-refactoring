@@ -71,11 +71,15 @@ ActiveRecord::Schema.define(version: 2019_04_13_120114) do
     t.bigint "department_id", null: false
     t.integer "responsible_tn", limit: 3
     t.bigint "room_id"
+    t.text "comment"
+    t.integer "status", limit: 1
+    t.date "freezing_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["department_id"], name: "index_invent_workplaces_on_department_id"
     t.index ["responsible_tn"], name: "fk_rails_e3635a7dcb"
     t.index ["room_id"], name: "index_invent_workplaces_on_room_id"
+    t.index ["status"], name: "index_invent_workplaces_on_status"
     t.index ["workplace_type_id"], name: "index_invent_workplaces_on_workplace_type_id"
   end
 
