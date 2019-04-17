@@ -4,6 +4,7 @@ module Invent
     has_many :types, through: :property_types
     has_many :property_lists, dependent: :destroy
     has_many :property_values, dependent: :destroy
+    has_many :model_property_lists, dependent: :destroy
 
     validates :name, :short_description, presence: true
   end

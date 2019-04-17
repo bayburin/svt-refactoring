@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_17_154321) do
+ActiveRecord::Schema.define(version: 2019_04_17_163753) do
 
   create_table "invent_departments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "name", null: false
@@ -35,6 +35,17 @@ ActiveRecord::Schema.define(version: 2019_04_17_154321) do
     t.index ["workplace_id"], name: "index_invent_items_on_workplace_id"
   end
 
+  create_table "invent_model_property_lists", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "model_id", null: false
+    t.bigint "property_id", null: false
+    t.bigint "property_list_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["model_id"], name: "index_invent_model_property_lists_on_model_id"
+    t.index ["property_id"], name: "index_invent_model_property_lists_on_property_id"
+    t.index ["property_list_id"], name: "index_invent_model_property_lists_on_property_list_id"
+  end
+
   create_table "invent_models", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "vendor_id", null: false
     t.string "name", null: false
@@ -44,6 +55,7 @@ ActiveRecord::Schema.define(version: 2019_04_17_154321) do
   end
 
   create_table "invent_properties", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "property_order", limit: 2
     t.string "name", limit: 32, null: false
     t.string "short_description", null: false
     t.string "long_description"
@@ -70,6 +82,18 @@ ActiveRecord::Schema.define(version: 2019_04_17_154321) do
     t.datetime "updated_at", null: false
     t.index ["property_id"], name: "index_invent_property_types_on_property_id"
     t.index ["type_id"], name: "index_invent_property_types_on_type_id"
+  end
+
+  create_table "invent_property_values", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "item_id", null: false
+    t.bigint "property_id", null: false
+    t.bigint "property_list_id", null: false
+    t.string "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_invent_property_values_on_item_id"
+    t.index ["property_id"], name: "index_invent_property_values_on_property_id"
+    t.index ["property_list_id"], name: "index_invent_property_values_on_property_list_id"
   end
 
   create_table "invent_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -146,10 +170,16 @@ ActiveRecord::Schema.define(version: 2019_04_17_154321) do
   add_foreign_key "invent_items", "invent_models", column: "model_id"
   add_foreign_key "invent_items", "invent_types", column: "type_id"
   add_foreign_key "invent_items", "invent_workplaces", column: "workplace_id"
+  add_foreign_key "invent_model_property_lists", "invent_models", column: "model_id"
+  add_foreign_key "invent_model_property_lists", "invent_properties", column: "property_id"
+  add_foreign_key "invent_model_property_lists", "invent_property_lists", column: "property_list_id"
   add_foreign_key "invent_models", "invent_vendors", column: "vendor_id"
   add_foreign_key "invent_property_lists", "invent_properties", column: "property_id"
   add_foreign_key "invent_property_types", "invent_properties", column: "property_id"
   add_foreign_key "invent_property_types", "invent_types", column: "type_id"
+  add_foreign_key "invent_property_values", "invent_items", column: "item_id"
+  add_foreign_key "invent_property_values", "invent_properties", column: "property_id"
+  add_foreign_key "invent_property_values", "invent_property_lists", column: "property_list_id"
   add_foreign_key "invent_workplaces", "invent_departments", column: "department_id"
   add_foreign_key "invent_workplaces", "invent_workplace_types", column: "workplace_type_id"
   add_foreign_key "invent_workplaces", "iss_location_rooms", column: "room_id", primary_key: "room_id"
