@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_17_123934) do
+ActiveRecord::Schema.define(version: 2019_04_17_154321) do
 
   create_table "invent_departments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "name", null: false
@@ -52,6 +52,15 @@ ActiveRecord::Schema.define(version: 2019_04_17_123934) do
     t.boolean "multiple", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "invent_property_lists", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "property_id", null: false
+    t.string "name", null: false
+    t.string "short_description", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["property_id"], name: "index_invent_property_lists_on_property_id"
   end
 
   create_table "invent_property_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -138,6 +147,7 @@ ActiveRecord::Schema.define(version: 2019_04_17_123934) do
   add_foreign_key "invent_items", "invent_types", column: "type_id"
   add_foreign_key "invent_items", "invent_workplaces", column: "workplace_id"
   add_foreign_key "invent_models", "invent_vendors", column: "vendor_id"
+  add_foreign_key "invent_property_lists", "invent_properties", column: "property_id"
   add_foreign_key "invent_property_types", "invent_properties", column: "property_id"
   add_foreign_key "invent_property_types", "invent_types", column: "type_id"
   add_foreign_key "invent_workplaces", "invent_departments", column: "department_id"
