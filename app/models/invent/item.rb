@@ -1,5 +1,7 @@
 module Invent
   class Item < ApplicationRecord
+    has_many :property_values, dependent: :destroy
+
     belongs_to :type
     belongs_to :workplace, optional: true
     belongs_to :model, optional: true
