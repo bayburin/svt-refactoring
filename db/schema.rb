@@ -48,9 +48,11 @@ ActiveRecord::Schema.define(version: 2019_04_17_163753) do
 
   create_table "invent_models", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "vendor_id", null: false
+    t.bigint "type_id", null: false
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["type_id"], name: "index_invent_models_on_type_id"
     t.index ["vendor_id"], name: "index_invent_models_on_vendor_id"
   end
 
@@ -59,6 +61,7 @@ ActiveRecord::Schema.define(version: 2019_04_17_163753) do
     t.string "name", limit: 32, null: false
     t.string "short_description", null: false
     t.string "long_description"
+    t.integer "property_type", limit: 1
     t.boolean "mandatory", default: false, null: false
     t.boolean "uniq", default: false, null: false
     t.boolean "multiple", default: false, null: false
@@ -173,6 +176,7 @@ ActiveRecord::Schema.define(version: 2019_04_17_163753) do
   add_foreign_key "invent_model_property_lists", "invent_models", column: "model_id"
   add_foreign_key "invent_model_property_lists", "invent_properties", column: "property_id"
   add_foreign_key "invent_model_property_lists", "invent_property_lists", column: "property_list_id"
+  add_foreign_key "invent_models", "invent_types", column: "type_id"
   add_foreign_key "invent_models", "invent_vendors", column: "vendor_id"
   add_foreign_key "invent_property_lists", "invent_properties", column: "property_id"
   add_foreign_key "invent_property_types", "invent_properties", column: "property_id"
