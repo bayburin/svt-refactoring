@@ -4,4 +4,9 @@
 //
 // <%= javascript_pack_tag 'hello_angular' %>
 
+import './application.scss';
+
+require("chart.js/dist/Chart.js");
+require("hammerjs/hammer.min.js");
+
 require('../hello_angular')
